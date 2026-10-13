@@ -1,0 +1,18 @@
+rules_version = '2';
+// Public read for portfolio and catalog images. Uploads happen server-side
+// via the Admin SDK only — any signed-in Firebase account could previously
+// upload or overwrite files here.
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    match /projects/{allPaths=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /products/{allPaths=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+rules_version = '2';
+// All writes and all private reads happen on the server through the Firebase
+// Admin SDK (which bypasses these rules), gated by the admin session check.
+// Browser clients therefore only get read access to already-published public
+// content, and NO access to enquiries, rate-limit data or anything else.
+// (Previously `request.auth != null` let ANY signed-in Firebase account —
+// which anyone can create with the public web API key — read enquiries and
+// write content.)
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /services/{serviceId} {
+      allow read: if resource.data.isPublished == true;
+      allow write: if false;
+    }
+
+    match /products/{productId} {
+      allow read: if resource.data.isAvailable == true;
+      allow write: if false;
+    }
+
+    match /projects/{projectId} {
+      allow read: if resource.data.isPublished == true;
+      allow write: if false;
+    }
+
+    match /settings/general {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Everything else (enquiries, _ratelimit, blog drafts, …): server only.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

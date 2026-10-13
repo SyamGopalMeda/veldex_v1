@@ -1,0 +1,267 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   VELDEX PAGE KIT — shared building blocks for every inner page.
+   Same tokens as the home page (globals.css :root --vx-*). Pages must compose
+   these before inventing new styles; page-specific rules live in
+   src/app/styles/vx-<page>.css.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Page hero (dark band) ───────────────────────────────────────────────── */
+.vx-ph {
+  --ease-o: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-x: cubic-bezier(0.77, 0, 0.18, 1);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 55% 60% at 85% 40%, rgba(243, 175, 4, 0.08), transparent 70%),
+    var(--vx-ink);
+  color: var(--vx-white);
+  isolation: isolate;
+}
+.vx-ph-grid-lines {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image: linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: calc(min(1320px, 100% - 3rem) / 12) 100%;
+  background-position: center;
+  mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent);
+}
+.vx-ph-inner {
+  position: relative; z-index: 1;
+  display: grid; gap: 2.5rem; align-items: center;
+  padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3.5rem, 7vw, 6rem);
+}
+.vx-ph.has-image .vx-ph-inner { min-height: min(78vh, 760px); }
+@media (min-width: 1024px) { .vx-ph.has-image .vx-ph-inner { grid-template-columns: 6fr 5fr; gap: 4rem; } }
+.vx-ph.is-compact .vx-ph-inner { padding-bottom: clamp(3rem, 6vw, 4.5rem); }
+.vx-ph-copy { max-width: 760px; }
+
+.vx-ph-crumbs ol { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; list-style: none; font-family: var(--vx-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.vx-ph-crumbs li { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.45); }
+.vx-ph-crumbs li + li::before { content: '/'; color: rgba(255,255,255,0.25); }
+.vx-ph-crumbs a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s ease; }
+.vx-ph-crumbs a:hover { color: var(--vx-signal); }
+.vx-ph-crumbs [aria-current] { color: rgba(255,255,255,0.85); }
+
+.vx-ph-kicker {
+  display: inline-flex; align-items: center; gap: 0.75rem; margin-top: 2rem;
+  font-family: var(--vx-mono); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--vx-signal);
+  animation: vxPhFade 0.8s var(--ease-o) 0.1s both;
+}
+.vx-ph-kicker i { width: 28px; height: 1px; background: currentColor; }
+
+.vx .vx-ph-title {
+  margin: 1.25rem 0 0;
+  font-family: var(--vx-sans); font-weight: 500;
+  font-size: clamp(2.4rem, 5.4vw, 4.8rem); line-height: 1.02; letter-spacing: -0.04em;
+  color: var(--vx-white); text-wrap: balance;
+}
+.vx-ph.is-compact .vx-ph-title { font-size: clamp(2.2rem, 4.6vw, 4rem); }
+.vx-ph-line { display: block; }
+.vx-ph-mask { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.1em; margin-bottom: -0.1em; margin-right: 0.22em; }
+.vx-ph-word { display: inline-block; transform: translate3d(0, 110%, 0) rotate(4deg); transform-origin: 0 100%; animation: vxPhRise 1s var(--ease-o) both; }
+.vx-ph-lead { max-width: 36rem; margin-top: 1.5rem; font-size: clamp(1rem, 1.25vw, 1.12rem); line-height: 1.7; color: rgba(255,255,255,0.72); }
+.vx-ph-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; margin-top: 2rem; }
+.vx-ph-meta { margin-top: 2.5rem; }
+.vx-ph-late { animation: vxPhFadeUp 0.9s var(--ease-o) var(--after) both; }
+
+.vx-ph-media { position: relative; }
+.vx-ph-frame {
+  position: relative; aspect-ratio: 4 / 3.4; border-radius: 4px; overflow: hidden;
+  background: var(--vx-graphite);
+  box-shadow: 0 40px 80px -40px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.07);
+  perspective: 1200px;
+}
+@media (max-width: 1023px) { .vx-ph-frame { aspect-ratio: 16 / 10; } }
+.vx-ph-slice { position: absolute; top: 0; bottom: 0; overflow: hidden; backface-visibility: hidden; animation: 1.1s var(--ease-x) both; }
+.vx-ph-slice.from-top { animation-name: vxPhSliceTop; }
+.vx-ph-slice.from-bottom { animation-name: vxPhSliceBottom; }
+.vx-ph-slice-img { position: absolute; top: 0; bottom: 0; }
+.vx-ph-corner { position: absolute; z-index: 2; width: 16px; height: 16px; border: 0 solid var(--vx-signal); }
+.vx-ph-corner.tl { top: 12px; left: 12px; border-top-width: 2px; border-left-width: 2px; }
+.vx-ph-corner.br { bottom: 12px; right: 12px; border-bottom-width: 2px; border-right-width: 2px; }
+
+@keyframes vxPhRise { to { transform: none; } }
+@keyframes vxPhFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes vxPhFadeUp { from { opacity: 0; transform: translate3d(0, 18px, 0); } to { opacity: 1; transform: none; } }
+@keyframes vxPhSliceTop { 0% { opacity: 0; transform: translate3d(0, -100%, -260px) rotateX(30deg); } 35% { opacity: 1; } 100% { opacity: 1; transform: none; } }
+@keyframes vxPhSliceBottom { 0% { opacity: 0; transform: translate3d(0, 100%, -260px) rotateX(-30deg); } 35% { opacity: 1; } 100% { opacity: 1; transform: none; } }
+
+/* ── Section head aside ──────────────────────────────────────────────────── */
+.vx-head-aside { color: var(--vx-muted); font-size: 1.0625rem; line-height: 1.7; }
+.vx-dark .vx-head-aside { color: var(--vx-muted-dark); }
+@media (min-width: 960px) { .vx-head-aside { justify-self: end; max-width: 30rem; } }
+
+/* ── Light surfaces ──────────────────────────────────────────────────────── */
+.vx-sec-white { background: var(--vx-white); }
+.vx-sec-tight { padding: clamp(3.5rem, 7vw, 5.5rem) 0; }
+.vx-rule { height: 1px; background: var(--vx-line); border: 0; margin: 0; }
+
+/* ── Cards / boxes ───────────────────────────────────────────────────────── */
+.vx-box {
+  position: relative;
+  padding: clamp(1.4rem, 2.4vw, 2rem);
+  background: var(--vx-white);
+  border: 1px solid var(--vx-line);
+  border-radius: 6px;
+  transition: border-color 0.4s var(--vx-ease), transform 0.5s var(--vx-ease), box-shadow 0.5s var(--vx-ease);
+}
+a.vx-box, .vx-box.is-link { color: inherit; text-decoration: none; }
+a.vx-box:hover, .vx-box.is-link:hover { border-color: var(--vx-text); transform: translateY(-3px); box-shadow: 0 24px 48px -28px rgba(14,14,13,0.35); }
+.vx-box-dark { background: var(--vx-graphite); border-color: var(--vx-line-dark); color: var(--vx-white); }
+.vx-box-icon {
+  width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--vx-line); border-radius: 4px; color: var(--vx-text);
+  transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+}
+.vx-box-dark .vx-box-icon { border-color: var(--vx-line-dark-2); color: var(--vx-signal); }
+a.vx-box:hover .vx-box-icon { background: var(--vx-signal); border-color: var(--vx-signal); color: var(--vx-ink); }
+.vx-box-num { font-family: var(--vx-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--vx-muted); }
+.vx-box-dark .vx-box-num { color: var(--vx-signal); }
+
+/* Shared grids */
+.vx-grid-2, .vx-grid-3, .vx-grid-4 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 720px) { .vx-grid-2, .vx-grid-3, .vx-grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .vx-grid-3 { grid-template-columns: repeat(3, 1fr); } .vx-grid-4 { grid-template-columns: repeat(4, 1fr); } }
+/* Hairline grid: boxes separated by 1px rules (combine with vx-grid-2/3/4) */
+.vx-hairgrid { display: grid; gap: 1px !important; background: var(--vx-line); border: 1px solid var(--vx-line); border-radius: 6px; overflow: hidden; }
+.vx-hairgrid > * { background: var(--vx-white); padding: clamp(1.4rem, 2.4vw, 2rem); }
+.vx-dark .vx-hairgrid { background: var(--vx-line-dark); border-color: var(--vx-line-dark); }
+.vx-dark .vx-hairgrid > * { background: var(--vx-graphite); }
+
+/* ── Photo media box ─────────────────────────────────────────────────────── */
+.vx-media { position: relative; overflow: hidden; border-radius: 4px; background: var(--vx-paper-2); }
+.vx-media img { object-fit: cover; transition: transform 1.4s var(--vx-ease); }
+.vx-media.is-hover:hover img, a:hover > .vx-media img { transform: scale(1.05); }
+.vx-media-tag {
+  position: absolute; left: 12px; bottom: 12px; z-index: 2;
+  padding: 0.35rem 0.6rem; border-radius: 3px; background: rgba(14,14,13,0.8);
+  font-family: var(--vx-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vx-white);
+}
+
+/* ── Lists ───────────────────────────────────────────────────────────────── */
+.vx-ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
+.vx-ticks li { position: relative; padding-left: 1.6rem; line-height: 1.55; color: var(--vx-text); }
+.vx-ticks li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 8px; height: 8px; background: var(--vx-signal); }
+.vx-dark .vx-ticks li { color: rgba(255,255,255,0.85); }
+
+/* ── Spec table ──────────────────────────────────────────────────────────── */
+.vx-spec { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.vx-spec th, .vx-spec td { padding: 0.85rem 0; border-bottom: 1px dashed var(--vx-line); text-align: left; vertical-align: top; }
+.vx-spec th { width: 42%; font-family: var(--vx-mono); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vx-muted); padding-right: 1rem; }
+.vx-spec td { color: var(--vx-text); font-weight: 500; }
+.vx-dark .vx-spec th { color: var(--vx-muted-dark); }
+.vx-dark .vx-spec td { color: var(--vx-white); }
+.vx-dark .vx-spec th, .vx-dark .vx-spec td { border-color: var(--vx-line-dark-2); }
+
+/* ── Tags / badges ───────────────────────────────────────────────────────── */
+.vx-tag {
+  display: inline-flex; align-items: center; gap: 0.4rem; height: 26px; padding: 0 0.6rem;
+  border: 1px solid var(--vx-line); border-radius: 3px;
+  font-family: var(--vx-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vx-muted);
+  background: transparent; text-decoration: none;
+}
+/* Tappable tags get a finger-sized hit area on touch screens */
+@media (pointer: coarse) { button.vx-tag, a.vx-tag { height: auto; min-height: 40px; } }
+.vx-tag.is-signal { background: var(--vx-signal); border-color: var(--vx-signal); color: var(--vx-ink); }
+.vx-dark .vx-tag { border-color: var(--vx-line-dark-2); color: var(--vx-muted-dark); }
+
+/* ── Forms ───────────────────────────────────────────────────────────────── */
+.vx-form { display: grid; gap: 1.1rem; grid-template-columns: minmax(0, 1fr); } /* minmax(0): never grow past the card on narrow phones */
+.vx-form-row { display: grid; gap: 1.1rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 720px) { .vx-form-row.cols-2 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.vx-field { display: grid; gap: 0.45rem; }
+/* fieldsets default to min-width: min-content and overflow narrow phones */
+fieldset.vx-field { min-width: 0; margin: 0; padding: 0; border: 0; }
+.vx-label { font-family: var(--vx-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--vx-muted); }
+.vx-label b { color: var(--vx-signal-ink); font-weight: 500; }
+.vx-input, .vx-select, .vx-textarea {
+  width: 100%; min-height: 50px; padding: 0.8rem 0.95rem;
+  background: var(--vx-white); color: var(--vx-text);
+  border: 1px solid var(--vx-line); border-radius: 4px;
+  /* 16px minimum: anything smaller makes iOS Safari zoom the page on focus */
+  font-family: var(--vx-sans); font-size: max(16px, 1rem); line-height: 1.4;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  appearance: none; -webkit-appearance: none;
+}
+.vx-textarea { min-height: 140px; resize: vertical; }
+.vx-select {
+  padding-right: 2.5rem; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--vx-muted) 50%), linear-gradient(135deg, var(--vx-muted) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%;
+  background-size: 5px 5px; background-repeat: no-repeat;
+}
+.vx-input::placeholder, .vx-textarea::placeholder { color: #A3A098; }
+.vx-input:hover, .vx-select:hover, .vx-textarea:hover { border-color: #BDB9AF; }
+.vx-input:focus, .vx-select:focus, .vx-textarea:focus { outline: none; border-color: var(--vx-text); box-shadow: 0 0 0 3px rgba(243, 175, 4, 0.28); }
+.vx-input[aria-invalid='true'], .vx-textarea[aria-invalid='true'], .vx-select[aria-invalid='true'] { border-color: #C0392B; }
+.vx-help { font-size: 0.82rem; color: var(--vx-muted); }
+.vx-error { font-size: 0.82rem; color: #B42318; }
+.vx-alert { display: flex; gap: 0.75rem; align-items: flex-start; padding: 1rem 1.1rem; border-radius: 4px; border: 1px solid var(--vx-line); background: var(--vx-paper); font-size: 0.92rem; line-height: 1.55; }
+.vx-alert.is-success { border-color: #A6D9B5; background: #EEF8F1; color: #155E33; }
+.vx-alert.is-error { border-color: #F2B8B5; background: #FDF0EF; color: #8C1D18; }
+/* Segmented choice (radio-like buttons) */
+.vx-seg { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.vx-seg button, .vx-seg label {
+  display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0 1rem;
+  border: 1px solid var(--vx-line); border-radius: 4px; background: var(--vx-white); color: var(--vx-text);
+  font-family: var(--vx-sans); font-size: 0.92rem; cursor: pointer; transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+.vx-seg button:hover, .vx-seg label:hover { border-color: var(--vx-text); }
+.vx-seg .is-on, .vx-seg button[aria-pressed='true'], .vx-seg input:checked + label { background: var(--vx-ink); border-color: var(--vx-ink); color: var(--vx-white); }
+
+/* ── Toolbar: search + filters ───────────────────────────────────────────── */
+.vx-search { position: relative; }
+.vx-search .vx-input { padding-left: 2.6rem; }
+.vx-search svg { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: var(--vx-muted); pointer-events: none; }
+
+/* ── Article typography ──────────────────────────────────────────────────── */
+.vx-prose { max-width: 720px; font-size: 1.0625rem; line-height: 1.8; color: #2E2D2A; }
+.vx-prose > * + * { margin-top: 1.25em; }
+.vx-prose :is(h2, h3) { color: var(--vx-text); letter-spacing: -0.025em; line-height: 1.2; margin-top: 2.2em; }
+.vx-prose h2 { font-size: clamp(1.6rem, 2.4vw, 2rem); }
+.vx-prose h3 { font-size: 1.3rem; }
+.vx-prose a { color: var(--vx-text); text-decoration: underline; text-decoration-color: var(--vx-signal); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+.vx-prose ul, .vx-prose ol { padding-left: 1.3rem; }
+.vx-prose li + li { margin-top: 0.45em; }
+.vx-prose ul li::marker { color: var(--vx-signal-ink); }
+.vx-prose blockquote { margin: 1.8em 0; padding: 0.4em 0 0.4em 1.25rem; border-left: 3px solid var(--vx-signal); color: var(--vx-text); font-size: 1.15rem; }
+.vx-prose strong { color: var(--vx-text); font-weight: 600; }
+
+/* ── Sticky aside (sidebars, TOCs) ───────────────────────────────────────── */
+.vx-aside-sticky { position: sticky; top: calc(var(--vx-nav-h) + 1.5rem); }
+.vx-toc { display: grid; gap: 0.15rem; }
+.vx-toc a {
+  display: grid; grid-template-columns: 2rem 1fr; align-items: baseline; gap: 0.25rem;
+  padding: 0.55rem 0.75rem; border-left: 2px solid var(--vx-line); color: var(--vx-muted);
+  font-size: 0.9rem; text-decoration: none; transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.vx-toc a span { font-family: var(--vx-mono); font-size: 0.68rem; }
+.vx-toc a:hover { color: var(--vx-text); }
+.vx-toc a.is-active { color: var(--vx-text); border-left-color: var(--vx-signal); background: var(--vx-white); }
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.vx-empty { padding: 3rem 1.5rem; text-align: center; border: 1px dashed var(--vx-line); border-radius: 6px; color: var(--vx-muted); }
+
+/* ── Action boxes (large clickable CTA tiles) ────────────────────────────── */
+.vx-action {
+  position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem;
+  min-height: 190px; padding: 1.75rem; border-radius: 4px; text-decoration: none;
+  border: 1px solid var(--vx-line-dark-2); color: var(--vx-white); background: transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+.vx-action:hover { border-color: rgba(255, 255, 255, 0.4); background: var(--vx-graphite); }
+.vx-action-primary { background: var(--vx-signal); color: var(--vx-ink); border-color: var(--vx-signal); }
+.vx-action-primary:hover { background: var(--vx-signal-hot); border-color: var(--vx-signal-hot); }
+.vx-action-icon { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid currentColor; border-radius: 3px; }
+.vx-action .vx-arrow { transition: transform 0.35s var(--vx-ease); }
+.vx-action:hover .vx-arrow { transform: translate(4px, -4px); }
+
+/* ── Closing CTA band ────────────────────────────────────────────────────── */
+.vx-cta-grid { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 1024px) { .vx-cta-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+.vx-cta-actions { display: grid; gap: 0.75rem; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .vx-cta-actions { grid-template-columns: 1fr 1fr; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .vx-ph-word, .vx-ph-kicker, .vx-ph-late, .vx-ph-slice { animation: none !important; transform: none !important; opacity: 1 !important; }
+}

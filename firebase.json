@@ -1,0 +1,40 @@
+{
+  "apphosting": [
+    {
+      "backendId": "veldex-web",
+      "rootDir": "/",
+      "ignore": [
+        "node_modules",
+        ".git",
+        ".next",
+        ".firebase",
+        "firebase-debug.log",
+        "firebase-service-account*.json",
+        "backups",
+        ".env*",
+        "*.tsbuildinfo",
+        ".codegraph",
+        "scripts",
+        "render.yaml",
+        "public/videos",
+        "public/images/gate_showcase_bg.mp4",
+        "public/images/Gate_sliding_open_on_driveway_202608300456.mp4",
+        "public/images/hero_bg_video.mp4",
+        "public/images/laser_cutting_bg.mp4",
+        "public/images/Laser_cutting_steel_plate_sparks_202608300459.mp4",
+        "public/images/shutter_bg.mp4",
+        "public/images/Steel_shutter_rolling_down_store…_202608300502.mp4",
+        "public/images/welders_plant_action.mp4",
+        "public/images/Welders_working_in_steel_plant_202608300454.mp4",
+        "public/images/hero/incoming",
+        "public/images/hero/For mobile view for hero section"
+      ]
+    }
+  ],
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  }
+}

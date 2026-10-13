@@ -1,0 +1,98 @@
+# Image credits
+
+Stock photography used on the public site. All photos below are from Unsplash and
+are used under the **Unsplash License** (free for commercial use, no attribution
+required — https://unsplash.com/license). Each photo's license was checked on its
+Unsplash page before download (none are "Unsplash+" licensed). Credits are kept
+here as good practice.
+
+These images are **illustrative** (service headers, service cards, page heroes).
+They are deliberately **not** used in the Projects portfolio, project pages or
+service "Recent work" sections, which must show Veldex's own completed work.
+
+## `public/images/stock/`
+
+| File | Photographer | Source |
+|---|---|---|
+| gate-wrought-iron-garden.jpg | Ahmet Yüksek | https://unsplash.com/photos/re7yIhClbAA |
+| entrance-wrought-iron-doors.jpg | Carrie Borden | https://unsplash.com/photos/TQxphxcnWHc |
+| interior-ornate-spiral-railing.jpg | Meizhi Lang | https://unsplash.com/photos/rKDWM5qfmfs |
+| interior-steel-stair-railing.jpg | Stephen Lartey | https://unsplash.com/photos/u3mklq7P2wY |
+| interior-dark-staircase.jpg | Meritt Thomas | https://unsplash.com/photos/PWA7RiUBBIo |
+| interior-spiral-stair-above.jpg | Bernardo Lorena Ponte | https://unsplash.com/photos/sTowaTudtQU |
+| exterior-modern-pergola.jpg | Kyle Ledyard | https://unsplash.com/photos/93TYtgVkGOo |
+| exterior-pergola-garden.jpg | My Foto Canva | https://unsplash.com/photos/CvaSWhua5O4 |
+| exterior-steel-roof-structure.jpg | D R | https://unsplash.com/photos/dSRhwPe6v9c |
+| exterior-decorative-panel.jpg | Miom _0326 | https://unsplash.com/photos/N5HLzhX73n4 |
+| exterior-metal-screen-facade.jpg | Adrianne Tulod | https://unsplash.com/photos/1ABdHbi1pc4 |
+| exterior-modern-house-driveway.jpg | Point3D Commercial Imaging Ltd. | https://unsplash.com/photos/X_JXnSBKOO4 |
+
+## `public/images/hero/` (home page slider)
+
+Current slider order: floating oak staircase, oak stair with black steel balusters,
+curved foyer staircase, laser-cut partition screen, laser-cut gate with wood & stone,
+Art Deco sliding gate at sunset (see the two sections below) (the other photos below are kept for reuse). Each
+was checked at 100% crop for sharpness; originals are 5465–6000 px wide and were
+downsized to 3840 px (`hero-wrought-iron-arch-gate.jpg` also toned down ~20% so
+copy stays legible over its bright sky).
+
+| File | Photographer | Source |
+|---|---|---|
+| hero-floating-oak-staircase.jpg | Clayton Chase | https://unsplash.com/photos/dCxrUkrvosY |
+| hero-oak-stair-black-balusters.jpg | Franco Debartolo | https://unsplash.com/photos/Th2F9Y_10yE |
+| hero-curved-foyer-staircase.jpg | Lotus Design N Print | https://unsplash.com/photos/Q8XUboQuc1E |
+| hero-laser-cut-corten-gate.jpg (not in slider) | Michael Skopal | https://unsplash.com/photos/BRYAEhUwPwc |
+| hero-spiral-staircase-ornate.jpg (not in slider) | Intricate Explorer | https://unsplash.com/photos/qLCvorZ8oQ4 |
+| hero-manor-gate.jpg | Jonathan Ching | https://unsplash.com/photos/NnyalZfG1k4 |
+| hero-wrought-iron-arch-gate.jpg | Nhan Hoang | https://unsplash.com/photos/QPeEPd0hZ6o |
+| hero-modern-house-night.jpg | Igor Savelev | https://unsplash.com/photos/hnFmQgrmLt4 |
+| hero-brick-pillar-gate.jpg | Waldemar Brandt | https://unsplash.com/photos/6vVEd4LOxl0 |
+| hero-estate-dusk.jpg | Daniel Barnes | https://unsplash.com/photos/RKdLlTyjm5g |
+| hero-welding.jpg (About page hero) | Lorin Both | https://unsplash.com/photos/d9Xff2E37ak |
+
+Earlier slider photos still in the folder but no longer on the home page:
+hero-laser-cutting.jpg (Clayton Cardinalli, hkJNx0EDbjE), hero-spiral-staircase.jpg
+(Gary Yost, jtaWEPNQW-M), hero-architectural-facade.jpg (Masood Aslami, QRfiJcZzOwY).
+
+## Supplied by Veldex (slide 4)
+
+| File | Source |
+|---|---|
+| hero-laser-cut-partition-classic.jpg | Meta AI concept render posted on Veldex's Facebook (fbid 1404590121460360) |
+| hero-laser-cut-partition-modern.jpg (not in slider) | Meta AI concept render posted on Veldex's Facebook (same post) |
+
+These are AI-generated illustrations, not photos of completed work. The originals
+were 1280×1280; the bottom strip carrying the "Meta AI" mark was trimmed and the
+images upscaled to 2560 px. Replace them with real project photos when available.
+
+## Added at the owner's request — licence NOT verified (slides 5–6)
+
+| File | Origin |
+|---|---|
+| hero-laser-cut-gate-wood-stone.jpg | Found via ChatGPT web search (images.openai.com/static-rsc-4/CMYJEQml…), original source unknown, 1920×1080 upscaled to 2880 |
+| hero-art-deco-sliding-gate-sunset.jpg | Found via ChatGPT web search (images.openai.com/static-rsc-4/793qqhyN…), original source unknown, 1024×576 upscaled to 2048 |
+
+These belong to an unidentified third party. Veldex chose to use them anyway
+(2026-10-11) after being told of the copyright risk. Replace them with Veldex's
+own photos or self-generated images when possible; remove promptly if the owner objects.
+
+## Home hero (current) — generated by the owner for Veldex
+
+Landscape slides: `public/images/hero/desktop/d-*.jpg` (1672 px originals, resized to 2560 px).
+Phone slides: `public/images/hero/mobile/m-*.jpg` (portrait, ~840×1870).
+The earlier Unsplash / third-party slider photos listed above are no longer used on the home page.
+
+## Generated
+
+| File | Source |
+|---|---|
+| og-default.jpg (social share image, 1200×630) | Built from hero-floating-oak-staircase.jpg (Clayton Chase, Unsplash License) with the Veldex logo and text |
+| logo-128.png | Downscaled copy of logo.png for fast display |
+
+## Not used (licensing)
+
+Images from southernstaircase.com (© Southern Staircase, all rights reserved; also
+only ~1000 px wide), novaweststeel.com portfolio gallery(© Nova West Steel Works Ltd., all rights reserved —
+their own projects) and homify.in ideabooks (owned by the credited professionals;
+homify's user terms prohibit commercial reuse) were reviewed as design references
+only and were not downloaded or used.
